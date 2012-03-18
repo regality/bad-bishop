@@ -63,7 +63,7 @@ function listInvites(req, res) {
       break;
     }
   }
-  res.render('index', {title: 'Chess', invites: _invites});
+  res.render('index', {title: 'Bad Bishop Chess', invites: _invites});
 }
 
 app.get('/', listInvites);
