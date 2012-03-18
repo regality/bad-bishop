@@ -143,7 +143,7 @@
         var sq = $this.attr('sq');
         var c = chess.get(sq);
         c = (c !== null ? c.color : false);
-        if (from === null && color === c) {
+        if (from === null && color === c && !chess.game_over()) {
           $this.addClass("hl");
           from = $this;
         } else if (from) {
@@ -193,7 +193,6 @@
             flash(reason, 10000);
           } else if (chess.in_draw()) {
             flash('<b>Game Over</b><br/>Game is a draw.', 10000);
-            chess.move = function(){ return null; };
           } else if (chess.in_stalemate()) {
             flash('<b>Game Over</b><br/>Game is a stalemate.', 10000);
           } else {
