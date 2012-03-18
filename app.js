@@ -68,12 +68,9 @@ function listInvites(req, res) {
 
 app.get('/', listInvites);
 
-if (app.settings.env === 'production') {
-  app.listen(80);
-} else {
-  app.listen(3000);
-}
-console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
+var port = process.env.PORT || 3000;
+app.listen(port);
+console.log("Express server listening on port %d in %s mode", port, app.settings.env);
 
 //Setup Socket.IO
 var io = io.listen(app);
