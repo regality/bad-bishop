@@ -1,11 +1,8 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background: #26466D;
   color: white;
-}
-
-h1,h2 {
+  font-size: 16pt;
   font-family: 'Macondo', cursive;
 }
 
@@ -34,7 +31,6 @@ a {
 .you,
 .otherguy {
   text-transform: capitalize;
-  font-size: 16px;
 }
 
 .yourturn:before {

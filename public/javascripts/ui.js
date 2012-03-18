@@ -130,7 +130,6 @@
     });
 
     $("button.accept").click(function() {
-      var name = $("input[name=name]").val();
       socket.emit('accept', {
         name: name,
         inviteId: $(this).attr('sid')
