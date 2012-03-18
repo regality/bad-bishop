@@ -70,7 +70,11 @@ app.get('/', listInvites);
 
 //Setup Socket.IO
 var io = io.listen(app);
-io.set('log level', 1);
+io.configure(function () { 
+  io.set('log level', 1);
+  io.set('transports', ['xhr-polling']); 
+  io.set('polling duration', 5); 
+});
 
 io.sockets.on('connection', function(socket) {
 
