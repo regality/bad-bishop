@@ -1,0 +1,116 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: #26466D;
+  color: white;
+}
+
+h1,h2 {
+  font-family: 'Macondo', cursive;
+}
+
+h2.welcome {
+  float: right;
+}
+
+a {
+  color: #00B7FF;
+}
+
+#main {
+  text-align: center;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+  margin: 20px;
+  padding: 20px;
+}
+
+#name input[type=text] {
+  height: 25px;
+  font-size: 25px;
+  width: 300px;
+}
+
+.you,
+.otherguy {
+  text-transform: capitalize;
+  font-size: 16px;
+}
+
+.yourturn:before {
+  content: "« ";
+}
+
+.yourturn:after {
+  content: " »";
+}
+
+.btn {
+  font-weight: bold;
+}
+
+.pgn {
+  text-align: left;
+  font-family: monospace;
+}
+
+.flash {
+  position: absolute;
+  top: 175px;
+  left: 80px;
+  width: 200px;
+  min-height: 30px;
+  text-align: center;
+  border-color: rgba(188, 232, 241, 0.9);
+  background-color: rgba(217, 237, 247, 0.9);
+}
+
+.accept {
+  width: 250px;
+}
+
+.board {
+  margin: 0px auto;
+}
+
+.chess {
+  position: relative;
+  width: 409px;
+  height: 409px;
+  border-top: 1px solid #000;
+  margin: 0px auto;
+}
+
+.square {
+   width: 50px;
+   height: 50px;
+   float: left;
+   border: 1px solid #000;
+   border-top: none;
+   border-right: none;
+}
+
+.square img {
+  width: 42px;
+  height: 42px;
+  border: none;
+  margin: 4px;
+}
+
+.square:nth-child(8n) {
+   border-right: 1px solid #000;
+}
+
+.square.light {
+  background: #ddd;
+  color: black;
+}
+
+.square.dark {
+  background: #777;
+  color: white;
+}
+
+.square.hl {
+   background: yellow;
+}

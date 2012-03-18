@@ -1,0 +1,33 @@
+h2.welcome
+h1= title
+#main
+  #name
+    h2 What's your name?
+    br
+    input(type='text',name='name')
+    br
+    button#setname.btn.btn-warning Continue
+  #find-game(style='display:none;')
+    h2 Challenge Someone To a Game
+    br
+    button#invite.btn.btn-warning Issue A Challenge
+    if invites
+      br
+      hr
+      h2 Or Accept Someones Challenge
+      br
+      each invite in invites
+        button.accept.btn.btn-warning(sid=invite.socket.id)
+          = invite.name
+        br
+        br
+  #waiting(style='display:none;')
+    h2 Waiting for a challenger to accept.
+  #play-game(style='display:none;')
+    .otherguy
+    br
+    .board
+    br
+    .you
+    br
+    .pgn

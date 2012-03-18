@@ -1,0 +1,17 @@
+!!!
+html
+  head
+    meta(charset='utf-8')
+    title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='http://fonts.googleapis.com/css?family=Macondo',rel='stylesheet',type='text/css')
+  body
+    script(src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js")
+    script
+      window.jQuery || document.write('<script src="/js/libs/jquery-1.7.1.min.js"><\\/script>')
+    script(src="http://ajax.cdnjs.com/ajax/libs/json2/20110223/json2.js")
+    script(src='/socket.io/socket.io.js')
+    script(src="/javascripts/chess.js")
+    script(src="/javascripts/ui.js")
+    != body
