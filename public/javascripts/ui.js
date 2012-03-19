@@ -27,7 +27,7 @@
   function drawBoard(chess, div, flipped) {
     var letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'];
     var squares = {};
-    var sq, square, board, color;
+    var sq, square, board, color, tmp;
 
     div = $(div);
     div.html('');
@@ -35,7 +35,26 @@
 
     board = $('<div/>');
     board.addClass('chess');
+
+    tmp = $("<div/>");
+    tmp.addClass("index-corner");
+    board.append(tmp);
+    for (var i = 0; i < 8; ++i) {
+      tmp = $("<div/>");
+      tmp.addClass("index-letter");
+      var l = ( flipped ? letters[7 - i] : letters[i]);
+      tmp.text(l);
+      board.append(tmp);
+    }
+    tmp = $("<div/>");
+    tmp.addClass("index-corner");
+    board.append(tmp);
     for (var i = 8; i > 0; --i) {
+      tmp = $("<div/>");
+      tmp.addClass("index-number");
+      var n = ( flipped ? (9 - i) : i);
+      tmp.text(n);
+      board.append(tmp);
       for (var l = 0; l < 8; ++l) {
         sq = ( flipped
              ? letters[7 - l] + (9 - i)
@@ -48,7 +67,25 @@
         squares[sq] = square;
         board.append(square);
       }
+      tmp = $("<div/>");
+      tmp.addClass("index-number");
+      tmp.text(n);
+      board.append(tmp);
     }
+    tmp = $("<div/>");
+    tmp.addClass("index-corner");
+    board.append(tmp);
+    for (var i = 0; i < 8; ++i) {
+      tmp = $("<div/>");
+      tmp.addClass("index-letter");
+      var l = ( flipped ? letters[7 - i] : letters[i]);
+      tmp.text(l);
+      board.append(tmp);
+    }
+    tmp = $("<div/>");
+    tmp.addClass("index-corner");
+    board.append(tmp);
+
     div.append(board);
 
     function getImage(piece) {
@@ -207,7 +244,7 @@
     });
 
     socket.on("abandon", function(msg) {
-      flash('<b>Opponent is a Sissy</b><br/>Your opponent has abandoned the game.', 60000);
+      flash('<b>Opponent is a Sissy</b><br/><br/>Your opponent has abandoned the game.', 60000);
     });
 
     socket.on('move', function(msg) {

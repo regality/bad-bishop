@@ -1,5 +1,8 @@
-h2.welcome
-h1= title
+.welcome
+  h2.welcome
+h1
+  img(src="/images/bad-bishop.png",height="100px",style="height:100px;vertical-align:bottom;")
+  = title
 #main
   #name
     h2 What's your name?
@@ -11,16 +14,27 @@ h1= title
     h2 Challenge Someone To a Game
     br
     button#invite.btn.btn-warning Issue A Challenge
-    if invites
-      br
-      hr
+    br
+    hr
+    if (!invites)
+      - style = "display:none;"
+    else
+      - style = ""
+    .players-waiting(style=style)
       h2 Or Accept Someones Challenge
-      br
-      each invite in invites
-        button.accept.btn.btn-warning(sid=invite.socket.id)
-          = invite.name
-        br
-        br
+      if invites
+        .challenge-list
+          each invite in invites
+            .challenge
+              button.accept.btn.btn-warning(sid=invite.socket.id)
+                = invite.name
+    if (invites)
+      - style = "display:none;"
+    else
+      - style = ""
+    .no-one-waiting(style=style)
+      h2 No players are currently waiting for an opponent.
+    br
   #waiting(style='display:none;')
     h2 Waiting for a challenger to accept.
   #play-game(style='display:none;')

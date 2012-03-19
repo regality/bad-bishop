@@ -1,13 +1,27 @@
 body {
-  padding: 50px;
+  padding: 2px;
   background: #26466D;
+  background-image: url(/images/blue.jpg);
   color: white;
   font-size: 16pt;
   font-family: 'Macondo', cursive;
 }
 
-h2.welcome {
+div.welcome {
   float: right;
+}
+
+h1 img {
+  position: relative;
+  top: 20px;
+  left: 10px;
+  vertical-align: bottom;
+  height: 100px;
+}
+
+h2.welcome {
+  margin-top: 65px;
+  margin-right: 20px;
 }
 
 a {
@@ -26,6 +40,11 @@ a {
   height: 25px;
   font-size: 25px;
   width: 300px;
+}
+
+.challenge {
+  height: 30px;
+  padding-top: 20px;
 }
 
 .you,
@@ -52,8 +71,8 @@ a {
 
 .flash {
   position: absolute;
-  top: 175px;
-  left: 80px;
+  top: 190px;
+  left: 100px;
   width: 200px;
   min-height: 30px;
   text-align: center;
@@ -71,10 +90,59 @@ a {
 
 .chess {
   position: relative;
-  width: 409px;
-  height: 409px;
-  border-top: 1px solid #000;
+  width: 459px;
+  height: 459px;
+  border: 1px solid black;
+  border-radius: 10px;
   margin: 0px auto;
+}
+
+.index-corner,
+.index-letter,
+.index-number {
+  color: white;
+  background: none;
+  background: rgba(255,255,255,0.2);
+  float: left;
+  font-size: 15px;
+}
+
+.index-corner {
+  height: 25px;
+  width: 25px;
+}
+
+.index-corner:nth-child(1)   { border-top-left-radius:     10px; }
+.index-corner:nth-child(10)  { border-top-right-radius:    10px; }
+.index-corner:nth-child(91)  { border-bottom-left-radius:  10px; }
+.index-corner:nth-child(100) { border-bottom-right-radius: 10px; }
+
+.index-letter {
+  height: 19px;
+  width: 51px;
+  padding-top: 5px;
+  text-align: center;
+  border-bottom: 1px solid black;
+}
+
+.index-letter:nth-child(8n + 1) {
+  width: 52px;
+}
+
+.index-letter:nth-child(n + 10) {
+  height: 20px;
+  border-bottom: none;
+}
+
+.index-number {
+  height: 31px;
+  width: 25px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.index-number:nth-child(2n) {
+  border-left: 1px solid black;
 }
 
 .square {
@@ -93,7 +161,7 @@ a {
   margin: 4px;
 }
 
-.square:nth-child(8n) {
+.square:nth-child(10n) {
    border-right: 1px solid #000;
 }
 
