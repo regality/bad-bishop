@@ -11,6 +11,11 @@ div.welcome {
   float: right;
 }
 
+img {
+  image-rendering: optimizeQuality;
+  -ms-interpolation-mode: bicubic;
+}
+
 h1 img {
   position: relative;
   top: 20px;
@@ -20,6 +25,7 @@ h1 img {
 }
 
 h2.welcome {
+  text-transform: capitalize;
   margin-top: 65px;
   margin-right: 20px;
 }
@@ -47,8 +53,13 @@ a {
   padding-top: 20px;
 }
 
+.challenge button {
+  text-transform: capitalize;
+}
+
 .you,
 .otherguy {
+  width: 1002px;
   text-transform: capitalize;
 }
 
@@ -62,11 +73,6 @@ a {
 
 .btn {
   font-weight: bold;
-}
-
-.pgn {
-  text-align: left;
-  font-family: monospace;
 }
 
 .flash {
@@ -84,17 +90,98 @@ a {
   width: 250px;
 }
 
-.board {
+.game {
   margin: 0px auto;
+  width: 1002px;
+  height: 530px;
+  position: relative;
+}
+
+.h500 {
+  height: 500px;
+}
+
+.chat {
+  float: left;
+  width: 250px;
+  height: 400px;
+  margin: 20px 0px;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border: 1px solid #999;
+  border-right: none;
+}
+
+.chat h3,
+.pgn h3 {
+  border-bottom: 1px solid white;
+}
+
+.conversation {
+  padding: 10px;
+  text-align: left;
+  overflow: auto;
+  height: 330px;
+}
+
+.conversation .msg {
+  font-family: "Trebuchet MS", sans-serif;
+  min-height: 20px;
+  font-size: 12pt;
+  margin: 5px;
+}
+
+.conversation .msg b {
+  text-transform: capitalize;
+  font-size: 14pt;
+  font-family: 'Macondo', cursive;
+  color: black;
+}
+
+.type {
+  height: 40px;
+}
+
+.type input {
+  width: 200px;
+}
+
+.pgn{
+  width: 250px;
+  height: 400px;
+  margin: 20px 0px;
+  padding: 10px;
+  float: left;
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border: 1px solid #999;
+  border-left: none;
+}
+
+.pgndata {
+  padding: 10px;
+  text-align: left;
+  font-size: 14pt;
+  font-family: monospace;
+  overflow: auto;
+}
+
+.cont {
+  float: left;
+  height: 500px;
+  width: 460px;
 }
 
 .chess {
+  float: left;
   position: relative;
   width: 459px;
   height: 459px;
   border: 1px solid black;
   border-radius: 10px;
-  margin: 0px auto;
 }
 
 .index-corner,

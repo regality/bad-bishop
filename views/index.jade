@@ -1,7 +1,7 @@
 .welcome
   h2.welcome
 h1
-  img(src="/images/bad-bishop.png",height="100px",style="height:100px;vertical-align:bottom;")
+  img(src="/images/bad-bishop.png")
   = title
 #main
   #name
@@ -38,10 +38,21 @@ h1
   #waiting(style='display:none;')
     h2 Waiting for a challenger to accept.
   #play-game(style='display:none;')
-    .otherguy
+    .game
+      .otherguy
+      .h500
+        br
+        .chat
+          h3 Chat
+          .conversation
+          .type
+            input(type="text")
+        .cont
+          .board
+        .pgn
+          h3 PGN
+          .pgndata
+      br
+      .you
+      br
     br
-    .board
-    br
-    .you
-    br
-    .pgn

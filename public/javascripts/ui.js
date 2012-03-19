@@ -2,6 +2,7 @@
   "use strict";
 
   var name;
+  var opponent;
   var color;
   var chess;
   var update = function(){};
@@ -22,6 +23,15 @@
       clearTimeout(timer);
       $(this).remove();
     });
+  }
+
+  function chatMsg(who, msg) {
+    var conversation = $(".conversation");
+    var html = $("<div/>");
+    html.addClass("msg");
+    html.append("<b>" + who + ":</b> " + msg + "<br/>");
+    conversation.append(html);
+    conversation.prop({ scrollTop: conversation.prop("scrollHeight") });
   }
 
   function drawBoard(chess, div, flipped) {
@@ -173,6 +183,25 @@
       });
     });
 
+    function htmlEntities(str) {
+      return String(str).replace(/&/g, '&amp;')
+                        .replace(/</g, '&lt;')
+                        .replace(/>/g, '&gt;')
+                        .replace(/"/g, '&quot;');
+    }
+
+    $(".type input").keyup(function(e) {
+      if (e.which === 13) {
+        var $this = $(this);
+        var msg = $this.val();
+        socket.emit("chat", {
+          msg: msg
+        });
+        chatMsg(name, htmlEntities(msg));
+        $this.val("");
+      }
+    });
+
     var from = null;
     $(".square").live('click', function() {
       var $this = $(this);
@@ -203,6 +232,7 @@
     socket.on('start', function(msg) {
       chess = new Chess();
       color = msg.color.substr(0, 1);
+      opponent = msg.name;
       var yourColor = msg.color;
       var theirColor = (yourColor === "white" ? "black" : "white");
       $(".otherguy").text(theirColor + ": " + msg.name);
@@ -217,7 +247,7 @@
           $(".you").removeClass("yourturn");
           $(".otherguy").addClass("yourturn");
         }
-        $(".pgn").html(chess.pgn({max_width: 5, newline_char: '<br/>'}));
+        $(".pgndata").html(chess.pgn({max_width: 5, newline_char: '<br/>'}));
         if (chess.game_over()) {
           var reason = '';
           if (chess.in_checkmate()) {
@@ -245,6 +275,10 @@
 
     socket.on("abandon", function(msg) {
       flash('<b>Opponent is a Sissy</b><br/><br/>Your opponent has abandoned the game.', 60000);
+    });
+
+    socket.on('chat', function(msg) {
+      chatMsg(opponent, msg.msg);
     });
 
     socket.on('move', function(msg) {
