@@ -22,18 +22,25 @@ app.configure('production', function(){
   app.use(express.errorHandler());
 });
 
-function listInvites(req, res) {
-  var _invites = null;
+function listInvitesJson(req, res) {
+  var invites = [];
   for (var i in games.invites) {
-    if (games.invites.hasOwnProperty(i)) {
-      _invites = games.invites
-      break;
-    }
+    invites.push({
+      name: games.invites[i].name,
+      id: i
+    });
   }
-  res.render('index', {title: 'Bad Bishop', invites: _invites});
+  res.json(invites);
+}
+
+function listInvites(req, res) {
+  res.render('index', {
+    title: 'Bad Bishop'
+  });
 }
 
 app.get('/', listInvites);
+app.get('/invites', listInvitesJson);
 
 var port = process.env.PORT || 3000;
 app.listen(port);

@@ -16,23 +16,10 @@ h1
     button#invite.btn.btn-warning Issue A Challenge
     br
     hr
-    if (!invites)
-      - style = "display:none;"
-    else
-      - style = ""
-    .players-waiting(style=style)
+    .players-waiting(style="display:none")
       h2 Or Accept Someones Challenge
-      if invites
-        .challenge-list
-          each invite in invites
-            .challenge
-              button.accept.btn.btn-warning(sid=invite.socket.id)
-                = invite.name
-    if (invites)
-      - style = "display:none;"
-    else
-      - style = ""
-    .no-one-waiting(style=style)
+      .challenge-list
+    .no-one-waiting(style="display:none")
       h2 No players are currently waiting for an opponent.
     br
   #waiting(style='display:none;')

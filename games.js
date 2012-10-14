@@ -25,17 +25,6 @@ function getGame(id) {
   return games[id];
 }
 
-function listInvites(req, res) {
-  var _invites = null;
-  for (var i in invites) {
-    if (invites.hasOwnProperty(i)) {
-      _invites = invites
-      break;
-    }
-  }
-  res.render('index', {title: 'Bad Bishop', invites: _invites});
-}
-
 exports.createInvite = createInvite;
 exports.createGame = createGame;
 exports.getGame = getGame;

@@ -137,11 +137,57 @@
 
     updateBoard();
     return updateBoard;
-  };
+  }
+
+  function _refreshInvites() {
+    $.ajax({
+      url: '/invites',
+      success: function(data) {
+
+        var challengeList = $(".challenge-list");
+        challengeList.html('');
+
+        if (data.length) {
+          $(".players-waiting").show();
+          $(".no-one-waiting").hide();
+        } else {
+          $(".players-waiting").hide();
+          $(".no-one-waiting").show();
+        }
+
+        for (var i = 0; i < data.length; ++i) {
+          var invite = data[i];
+          var html =
+            '<div class="challenge">' +
+            '<button sid="' + invite.id + '" class="accept btn btn-warning">' +
+            invite.name +
+            '</button>' +
+            '</div>';
+          challengeList.append(html);
+        }
+      }
+    });
+  }
+
+  var inviteTimer;
+  function refreshInvites(stop) {
+    if (stop) {
+      return clearInterval(inviteTimer);
+    }
+    if (!inviteTimer) {
+      _refreshInvites();
+      inviteTimer = setInterval(_refreshInvites, 1000);
+    }
+  }
 
   function showStep(name) {
     $("#main > div").hide();
     $("#main #" + name).show();
+    if (name == 'find-game') {
+      refreshInvites();
+    } else {
+      refreshInvites(true);
+    }
   }
 
   $(document).ready(function() {
@@ -176,7 +222,7 @@
       showStep("waiting");
     });
 
-    $("button.accept").click(function() {
+    $("button.accept").live('click', function() {
       socket.emit('accept', {
         name: name,
         inviteId: $(this).attr('sid')
